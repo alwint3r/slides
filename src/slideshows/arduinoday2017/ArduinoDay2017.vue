@@ -57,7 +57,7 @@
 
     slide(enter='fadeIn' leave='fadeOut')
       h3 Arduino Framework
-      p The language is derived from Wiring which is also derived from C++.
+      p The language is derived from Wiring.
       p Wiring offers high-level abstraction.
       p Reading from / writing to connected components is as easy as typing:
       pre.code.
@@ -127,7 +127,7 @@
 
     slide(enter='fadeIn' leave='fadeOut')
       h4.center Adafruit 2.8" TFT Touch Shield
-      p No wiring, no soldering, just connect the headers. It just sorta.... works
+      p No wiring, no soldering, just connect the headers. It just sorta.... works.
 
     slide(enter='fadeIn' leave='fadeOut')
       h3 TFT Screen Pins
@@ -147,6 +147,204 @@
         li Digital #12 -> ICSP MISO
         li Digital #11 -> ICSP MOSI
         li Digital #8 -> SMTPE610 CS
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3 Before We Code...
+      p We need to install these libraries:
+      ul.agenda-list
+        li
+          a(href='https://github.com/adafruit/Adafruit_ILI9341/archive/master.zip').
+            Adafruit ILI9341 Library
+        li
+          a(href='https://github.com/adafruit/Adafruit-GFX-Library/archive/master.zip').
+            Adafruit GFX Library
+      p We just need to simply import them from our Arduino IDE.
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3 Coordinate System
+      div.img-wrapper
+        img(src='https://cdn-learn.adafruit.com/assets/assets/000/001/264/medium800/lcds___displays_coordsys.png?1396770439')
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3 Colors
+      p Each color is represented by a 16 unsigned bit integers.
+      div.img-wrapper
+        img(src='https://cdn-learn.adafruit.com/assets/assets/000/001/265/medium800/lcds___displays_colorpack.png?1396770449')
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3 Colors
+      pre.code.
+        #define BLACK    0x0000
+        #define BLUE     0x001F
+        #define RED      0xF800
+        #define GREEN    0x07E0
+        #define CYAN     0x07FF
+        #define MAGENTA  0xF81F
+        #define YELLOW   0xFFE0
+        #define WHITE    0xFFFF
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Pixel and Lines
+
+      pre.code(style='font-size:12pt').
+        void drawPixel(uint16_t x, uint16_t y, uint16_t colors);
+
+        void drawLine(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t x1,
+          uint16_t y1
+          uint16_t color
+        );
+
+        void drawFastVLine(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t length,
+          uint16_t color
+        );
+
+        void drawFastHLine(
+          uint8_t x0,
+          uint8_t y0,
+          uint8_t length,
+          uint16_t color
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Rectangles
+
+      pre.code(style='font-size:12pt').
+        void drawRect(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t w,
+          uint16_t h,
+          uint16_t color
+        );
+
+        void fillRect(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t w,
+          uint16_t h,
+          uint16_t color
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Circles
+
+      pre.code(style='font-size:12pt').
+        void drawCircle(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t r,
+          uint16_t color
+        );
+
+        void fillCircle(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t r,
+          uint16_t color
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Rounded Rectangles
+
+      pre.code(style='font-size:12pt').
+        void drawRoundRect(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t w,
+          uint16_t h,
+          uint16_t radius,
+          uint16_t color
+        );
+
+        void fillRoundRect(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t w,
+          uint16_t h,
+          uint16_t radius,
+          uint16_t color
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Triangles
+
+      pre.code(style='font-size:12pt').
+        void drawTriangle(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t x1,
+          uint16_t y1,
+          uint16_t x2,
+          uint16_t y2,
+          uint16_t color
+        );
+
+        void fillTriangle(
+          uint16_t x0,
+          uint16_t y0,
+          uint16_t x1,
+          uint16_t y1,
+          uint16_t x2,
+          uint16_t y2,
+          uint16_t color
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Characters
+
+      pre.code(style='font-size:12pt').
+        void drawChar(
+          uint16_t x,
+          uint16_t y,
+          char c,
+          uint16_t color,
+          uint16_t bg,
+          uint8_t size
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h4 Drawing Text
+
+      pre.code(style='font-size:12pt').
+        void drawChar(
+          uint16_t x,
+          uint16_t y,
+          char c,
+          uint16_t color,
+          uint16_t bg,
+          uint8_t size
+        );
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3.center-title Enough talking, let's code!
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3.center-title Thank You!
+
+    slide(enter='fadeIn' leave='fadeOut')
+      p.center-title Cool and hackable slideshow by Eagle.js
+
+    slide(enter='fadeIn' leave='fadeOut')
+      p.center-title Awesome shield and learning resource from Adafruit
+
+    slide(enter='fadeIn' leave='fadeOut')
+      h3 Find Me
+      ul.contact-list.center
+        li Github (github.com/alwint3r)
+        li Twitter (@alwin_wint3r)
+        li Mail (alwin.ridd@gmail.com)
+
+    slide(enter='fadeIn' leave='fadeOut')
+      p.center-title Today's code
+      a(href='https://github.com/alwint3r/ArduinoDay2017Bdg_Code' style='text-align:center; margin-left: 40px') github.com/alwint3r/ArduinoDay2017Bdg_Code
+
+
 
 </template>
 
@@ -194,6 +392,11 @@ export default {
   }
   .agenda-list li {
     padding-top: 10px;
+  }
+
+  .contact-list li {
+    padding-top: 10px;
+    list-style: none;
   }
 }
 </style>
