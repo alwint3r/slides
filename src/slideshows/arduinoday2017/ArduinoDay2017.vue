@@ -1,7 +1,7 @@
 <template lang='pug'>
 #MyFirstSlideshow
   .eg-slideshow
-    slide(enter='fadeIn')
+    slide(enter='fadeIn').first-slide
       h2.center-title Arduino Day 2017
 
     slide(leave='fadeOut')
@@ -397,6 +397,14 @@ export default {
   .contact-list li {
     padding-top: 10px;
     list-style: none;
+  }
+
+  .first-slide {
+    background-image: url('assets/front.png');
+    background-size: 100%;
+    color: transparent;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 }
 </style>
